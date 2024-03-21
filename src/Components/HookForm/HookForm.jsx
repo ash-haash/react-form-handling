@@ -1,18 +1,17 @@
+import useInputState from "../../Hooks/useInputState";
 
-const SimpleForm = () => {
+const HookForm = () => {
+    const [name, handleNameChange] = useInputState('Rojoni Hooked')
 
     const handleSubmit = e => {
+        console.log('form data', name);
         e.preventDefault();
-        console.log(e.target.name.value);
-        console.log(e.target.email.value);
-        console.log(e.target.phone.value);
-        console.log('form submitted')
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="name" />
+                <input value={name} onChange={handleNameChange} type="text" name="name" />
                 <br />
                 <input type="email" name="email" id="" />
                 <br />
@@ -20,8 +19,8 @@ const SimpleForm = () => {
                 <br />
                 <input type="submit" value="Submit" />
             </form>
-        </div >
+        </div>
     );
 };
 
-export default SimpleForm;
+export default HookForm;
